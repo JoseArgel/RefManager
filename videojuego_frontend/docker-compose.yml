@@ -1,0 +1,17 @@
+version: '3'
+services:
+    nuxt:
+        restart: unless-stopped
+        build:
+            context: .
+        networks:
+            - web
+        env_file:
+            - .env
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '50m'
+networks:
+    web:
+        external: true
